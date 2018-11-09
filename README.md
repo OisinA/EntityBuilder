@@ -1,18 +1,6 @@
 # EntityBuilder
 
-TODO: Write a description here
-
-## Installation
-
-TODO: Write installation instructions here
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
+Application built to generate a JSON file for an entity in a game. Application uses (<https://github.com/hedron-crystal/hedron).
 
 ## Contributing
 
