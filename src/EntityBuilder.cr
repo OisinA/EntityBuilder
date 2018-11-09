@@ -25,10 +25,10 @@ class EntityBuilder < Hedron::Application
         json.field "health", @health.not_nil!.value
         json.field "mana", @mana.not_nil!.value
         json.field "speed", @speed.not_nil!.text.to_f
-        json.field "behaviours", @behaviours.not_nil!.text.split("\n")
+        json.field "behaviours", @behaviours.not_nil!.text.split "\n"
       end
     end
-    File.write(@name.not_nil!.text.downcase + ".json", to_write)
+    File.write @name.not_nil!.text.downcase + ".json", to_write
     puts "Wrote to " + @name.not_nil!.text + ".json"
   end
 
@@ -82,7 +82,7 @@ class EntityBuilder < Hedron::Application
     @behaviours.not_nil!.stretchy = true
     grid.push(@behaviours.not_nil!, {2, 8}, cell_info1)
 
-    create = Hedron::Button.new("Create")
+    create = Hedron::Button.new "Create"
     create.on_click = ->on_click(Hedron::Button)
     grid.push(create, {2, 18}, cell_info)
 
