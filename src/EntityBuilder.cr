@@ -28,8 +28,14 @@ class EntityBuilder < Hedron::Application
         json.field "behaviours", @behaviours.not_nil!.text.split "\n"
       end
     end
+    log to_write
     File.write @name.not_nil!.text.downcase + ".json", to_write
-    puts "Wrote to " + @name.not_nil!.text + ".json"
+    log "Wrote to " + @name.not_nil!.text + ".json"
+  end
+
+  def log(output)
+    puts output
+    @output_box.not_nil!.text = @output_box.not_nil!.text + output + "\n"
   end
 
   def draw
@@ -56,11 +62,18 @@ class EntityBuilder < Hedron::Application
       align_y: :fill
     )
 
-    grid.push(Hedron::Label.new("Entity Name"), {1, 0}, cell_info)
-    grid.push(Hedron::Label.new("Health"), {1, 2}, cell_info)
-    grid.push(Hedron::Label.new("Mana"), {1, 4}, cell_info)
-    grid.push(Hedron::Label.new("Speed"), {1, 6}, cell_info)
-    grid.push(Hedron::Label.new("Behaviours"), {1, 8}, cell_info)
+    cell_info2 = Hedron::GridCell.new(
+      size: {50, 40},
+      expand: {false, false},
+      align_x: :fill,
+      align_y: :fill
+    )
+
+    grid.push Hedron::Label.new("Entity Name"), {1, 0}, cell_info
+    grid.push Hedron::Label.new("Health"), {1, 2}, cell_info
+    grid.push Hedron::Label.new("Mana"), {1, 4}, cell_info
+    grid.push Hedron::Label.new("Speed"), {1, 6}, cell_info
+    grid.push Hedron::Label.new("Behaviours"), {1, 8}, cell_info
 
     @name = Hedron::Entry.new
     @name.not_nil!.text = "Slime"
@@ -85,6 +98,10 @@ class EntityBuilder < Hedron::Application
     create = Hedron::Button.new "Create"
     create.on_click = ->on_click(Hedron::Button)
     grid.push(create, {2, 18}, cell_info)
+
+    @output_box = Hedron::MultilineEntry.new
+    @output_box.not_nil!.read_only = true
+    grid.push(@output_box.not_nil!, {3, 0}, cell_info2)
 
     @window.not_nil!.child = grid
     @window.not_nil!.show
