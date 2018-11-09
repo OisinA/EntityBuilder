@@ -1,0 +1,17 @@
+name: EntityBuilder
+version: 0.1.0
+
+authors:
+  - OisinA <oisinaylward@gmail.com>
+
+targets:
+  EntityBuilder:
+    main: src/EntityBuilder.cr
+
+dependencies:
+  hedron:
+    github: hedron-crystal/hedron
+
+crystal: 0.27.0
+
+license: MIT
