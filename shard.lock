@@ -1,0 +1,14 @@
+version: 1.0
+shards:
+  hedron:
+    github: hedron-crystal/hedron
+    commit: 009cfdfe5ec1a3911af9c8dfa1241f0bb4cafa25
+
+  stumpy_core:
+    github: stumpycr/stumpy_core
+    version: 1.8.2
+
+  stumpy_png:
+    github: stumpycr/stumpy_png
+    version: 4.4.1
+
