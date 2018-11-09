@@ -1,6 +1,6 @@
 # EntityBuilder
 
-Application built to generate a JSON file for an entity in a game. Application uses (<https://github.com/hedron-crystal/hedron).
+Application built to generate a JSON file for an entity in a game. Application uses (<https://github.com/hedron-crystal/hedron>).
 
 ## Contributing
 
